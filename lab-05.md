@@ -30,8 +30,8 @@ nobel <- read_csv("data/nobel.csv")
 
 1.  How many observations and how many variables are in the dataset? Use
     inline code to answer this question. What does each row represent?  
-    Orservation 935 Variables 26 each row reprenst information about a
-    noble winner
+    Orservation :935 Variables: 26 each row reprenst information about a
+    noble prize winner.
 
 ``` r
 dim(nobel)
