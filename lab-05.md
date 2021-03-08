@@ -30,8 +30,8 @@ nobel <- read_csv("data/nobel.csv")
 
 1.  How many observations and how many variables are in the dataset? Use
     inline code to answer this question. What does each row represent?  
-    Orservation :935 Variables: 26 each row reprenst information about a
-    noble prize winner.
+    observation : 953 variables: 26 represent ont person who had get
+    nobel
 
 ``` r
 dim(nobel)
@@ -51,10 +51,7 @@ Each row represents information about a nobel prize winner.
 Get the code from the lab document
 
 ``` r
-nobel_living <- nobel %>%
-mutate(
-country_us = if_else(country == "USA", "USA", "Other")
-)
+nobel_living <-nobel %>% filter(is.na(died_date) ,country!="NA" , gender!="org" )
 ```
 
 Confirm that once you have filtered for these characteristics you are
@@ -65,14 +62,26 @@ again using inline code.
 nrow(nobel_living)
 ```
 
-    ## [1] 935
+    ## [1] 228
 
 ## Most living Nobel laureates were based in the US when they won their prizes
 
 Get the code from the Lab document
 
+``` r
+nobel_living <- nobel_living %>%
+mutate(
+country_us = if_else(country == "USA", "USA", "Other")
+)
+```
+
 Next, we will limit our analysis to only the following categories:
 Physics, Medicine, Chemistry, and Economics.
+
+``` r
+nobel_living_science <- nobel_living %>%
+filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
+```
 
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
@@ -94,9 +103,20 @@ your Git pane is cleared up afterwards.d*
 
 ## But of those US-based Nobel laureates, many were born in other countries
 
+``` r
+nobel_living_science %>%  
+ggplot (aes(x = country_us,y =category, fill =category)) + 
+geom_bar(stat = "identity", position = "dodge",
+orientation="horizontal")
+```
+
+![](lab-05_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
 4.  Create a new variable called `born_country_us` that has the value
     `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
     How many of the winners are born in the US?
+
+USA 105
 
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
@@ -114,6 +134,13 @@ your Git pane is cleared up afterwards.d*
     -   Each bar should have segments for whether the laureate was born
         in the US or not.
 
+``` r
+nobel_living_science <- nobel_living_science %>% mutate( born_country_us = if_else(born_country == "USA", "USA", "Other"))
+ nobel_living_science %>%ggplot(aes(x = country_us,y=born_country_us, fill = category)) + geom_bar(stat = "identity", position = "dodge", orientation="horizontal")
+```
+
+![](lab-05_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
 your Git pane is cleared up afterwards.*
@@ -124,6 +151,25 @@ your Git pane is cleared up afterwards.*
     (`born_country`) and arrange the resulting data frame in descending
     order of number of observations for each country. Which country is
     the most common?
+
+``` r
+nobel_living_science %>% filter(born_country_us=="Other",country_us=="USA")%>%count(born_country) %>% arrange(desc(n))
+```
+
+    ## # A tibble: 21 x 2
+    ##    born_country       n
+    ##    <chr>          <int>
+    ##  1 Germany            7
+    ##  2 United Kingdom     7
+    ##  3 China              5
+    ##  4 Canada             4
+    ##  5 Japan              3
+    ##  6 Australia          2
+    ##  7 Israel             2
+    ##  8 Norway             2
+    ##  9 Austria            1
+    ## 10 Finland            1
+    ## # … with 11 more rows
 
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
