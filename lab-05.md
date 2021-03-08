@@ -34,7 +34,7 @@ nobel <- read_csv("data/nobel.csv")
     nobel
 
 ``` r
-dim(nobel)
+ dim(nobel)
 ```
 
     ## [1] 935  26
@@ -51,7 +51,7 @@ Each row represents information about a nobel prize winner.
 Get the code from the lab document
 
 ``` r
-nobel_living <-nobel %>% filter(is.na(died_date) ,country!="NA" , gender!="org" )
+ nobel_living <-nobel %>% filter(is.na(died_date) ,country!="NA" , gender!="org" )
 ```
 
 Confirm that once you have filtered for these characteristics you are
@@ -59,7 +59,7 @@ left with a data frame with ‘nrow(nobel\_living)’ observations, once
 again using inline code.
 
 ``` r
-nrow(nobel_living)
+ nrow(nobel_living)
 ```
 
     ## [1] 228
@@ -69,7 +69,7 @@ nrow(nobel_living)
 Get the code from the Lab document
 
 ``` r
-nobel_living <- nobel_living %>%
+ nobel_living <- nobel_living %>%
 mutate(
 country_us = if_else(country == "USA", "USA", "Other")
 )
@@ -79,7 +79,7 @@ Next, we will limit our analysis to only the following categories:
 Physics, Medicine, Chemistry, and Economics.
 
 ``` r
-nobel_living_science <- nobel_living %>%
+ nobel_living_science <- nobel_living %>%
 filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
 ```
 
