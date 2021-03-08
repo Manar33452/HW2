@@ -5,7 +5,7 @@ Team Name: DS5
 
 Team Members - Name and Student ID
 
-1.  manar mohsen almutairi  220100526
+1.  Manar mohsen almutairi  220100526
 
 ## Packages
 

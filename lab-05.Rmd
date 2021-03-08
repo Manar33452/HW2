@@ -7,7 +7,7 @@ Team Name: DS5
 
 Team Members - Name and Student ID
 
-1. manar mohsen almutairi \ 220100526
+1. Manar mohsen almutairi \ 220100526
 
 
 
@@ -107,7 +107,7 @@ nobel_living_science %>%
 ggplot (aes(x = country_us,y =category, fill =category)) + 
 geom_bar(stat = "identity", position = "dodge",
 orientation="horizontal")
-```
+``` 
 
 
 4.  Create a new variable called `born_country_us` that has the value `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
