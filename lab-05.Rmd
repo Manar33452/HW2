@@ -3,11 +3,11 @@ title: "Lab 05 - Nobel laureates"
 output: github_document
   
 ---
-Team Name:DS5
+Team Name: DS5
 
 Team Members - Name and Student ID
 
-1. manar mohsen \ 220100526
+1. manar mohsen almutairi \ 220100526
 
 
 
