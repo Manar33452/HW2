@@ -1,11 +1,11 @@
 Lab 05 - Nobel laureates
 ================
 
-Team Name: DS5
+Team Name:DS5
 
 Team Members - Name and Student ID
 
-1.  Manar mohsen almutairi  220100526
+1.  Manar mohsen almutairi, 220100526
 
 ## Packages
 
