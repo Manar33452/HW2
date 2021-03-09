@@ -104,7 +104,7 @@ your Git pane is cleared up afterwards.d*
 ## But of those US-based Nobel laureates, many were born in other countries
 
 ``` r
- nobel_living_science %>%  
+nobel_living_science %>%  
 ggplot (aes(x = country_us,y =category, fill =category)) + 
 geom_bar(stat = "identity", position = "dodge",
 orientation="horizontal")
@@ -116,7 +116,7 @@ orientation="horizontal")
     `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
     How many of the winners are born in the US?
 
-USA 105
+USA:105
 
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
@@ -135,7 +135,7 @@ your Git pane is cleared up afterwards.d*
         in the US or not.
 
 ``` r
- nobel_living_science <- nobel_living_science %>% mutate( born_country_us = if_else(born_country == "USA", "USA", "Other"))
+nobel_living_science <- nobel_living_science %>% mutate( born_country_us = if_else(born_country == "USA", "USA", "Other"))
  nobel_living_science %>%ggplot(aes(x = country_us,y=born_country_us, fill = category)) + geom_bar(stat = "identity", position = "dodge", orientation="horizontal")
 ```
 
@@ -153,7 +153,7 @@ your Git pane is cleared up afterwards.*
     the most common?
 
 ``` r
- nobel_living_science %>% filter(born_country_us=="Other",country_us=="USA")%>%count(born_country) %>% arrange(desc(n))
+nobel_living_science %>% filter(born_country_us=="Other",country_us=="USA")%>%count(born_country) %>% arrange(desc(n))
 ```
 
     ## # A tibble: 21 x 2
